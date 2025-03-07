@@ -42,6 +42,7 @@ class RefresherApplicationTests {
 
     @Test
     @DisplayName("should return bean ahs been refreshed message")
+    @Order(3)
     void shouldReturnBeanAhsBeenRefreshedMessage() {
         mockMvcTester.post()
                 .uri("/refresh")

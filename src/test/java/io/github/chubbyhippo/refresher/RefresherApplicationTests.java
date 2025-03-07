@@ -6,6 +6,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -38,5 +40,14 @@ class RefresherApplicationTests {
                 .uri("/message")
                 .assertThat()
                 .hasBodyTextEqualTo("Changed message");
+    }
+
+    @Test
+    @DisplayName("should return bean ahs been refreshed message")
+    void shouldReturnBeanAhsBeenRefreshedMessage() {
+        mockMvcTester.post()
+                .uri("/refresh")
+                .assertThat()
+                .hasStatusOk();
     }
 }

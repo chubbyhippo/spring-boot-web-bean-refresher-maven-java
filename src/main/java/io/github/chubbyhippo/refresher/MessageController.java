@@ -15,13 +15,17 @@ public class MessageController {
     }
 
     @GetMapping("/message")
-    public String getMessage() {
+    String getMessage() {
         return messageService.getMessage();
     }
 
     @PostMapping("/message")
-    public void setMessage(@RequestBody String message) {
+    void setMessage(@RequestBody String message) {
         messageService.setMessage(message);
     }
 
+    @PostMapping("/refresh")
+    String refreshMessageService() {
+       return "refresh";
+    }
 }

@@ -1,4 +1,4 @@
-package io.github.chubbyhippo.refresher;
+package io.github.chubbyhippo.refresher.bean;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package io.github.chubbyhippo.refresher;
+package io.github.chubbyhippo.refresher.bean;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;

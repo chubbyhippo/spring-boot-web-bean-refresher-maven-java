@@ -1,4 +1,4 @@
-package io.github.chubbyhippo.refresher;
+package io.github.chubbyhippo.refresher.message;
 
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;

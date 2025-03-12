@@ -1,8 +1,10 @@
 package io.github.chubbyhippo.refresher;
 
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
 @Service
+@RefreshScope
 public class MessageService {
     private String message;
 

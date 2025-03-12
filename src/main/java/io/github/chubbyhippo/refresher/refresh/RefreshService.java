@@ -1,19 +1,22 @@
 package io.github.chubbyhippo.refresher.refresh;
 
 
-import org.springframework.cloud.context.scope.refresh.RefreshScopeRefreshedEvent;
-import org.springframework.context.ApplicationEventPublisher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cloud.endpoint.RefreshEndpoint;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RefreshService {
-    private final ApplicationEventPublisher publisher;
+    private static final Logger log = LoggerFactory.getLogger(RefreshService.class);
+    private final RefreshEndpoint refreshEndpoint;
 
-    public RefreshService(ApplicationEventPublisher publisher) {
-        this.publisher = publisher;
+    public RefreshService(RefreshEndpoint refreshEndpoint) {
+        this.refreshEndpoint = refreshEndpoint;
     }
 
     public void triggerRefresh() {
-        publisher.publishEvent(new RefreshScopeRefreshedEvent());
+        var refreshResult = refreshEndpoint.refresh();
+        log.info("Refreshed: {}", refreshResult);
     }
 }

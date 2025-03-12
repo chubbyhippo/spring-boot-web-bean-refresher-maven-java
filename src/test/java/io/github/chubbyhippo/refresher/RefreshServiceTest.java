@@ -13,9 +13,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class RefresherServiceTest {
+public class RefreshServiceTest {
     @InjectMocks
-    private RefresherService refresherService;
+    private RefreshService refreshService;
 
     @Mock
     private ApplicationEventPublisher eventPublisher;
@@ -25,7 +25,7 @@ public class RefresherServiceTest {
     void shouldPublishRefreshScopeRefreshedEvent() {
         doNothing().when(eventPublisher)
                 .publishEvent(any(RefreshScopeRefreshedEvent.class));
-        refresherService.triggerRefresh();
+        refreshService.triggerRefresh();
         verify(eventPublisher, times(1))
                 .publishEvent(any(RefreshScopeRefreshedEvent.class));
     }

@@ -6,10 +6,10 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RefresherService {
+public class RefreshService {
     private final ApplicationEventPublisher publisher;
 
-    public RefresherService(ApplicationEventPublisher publisher) {
+    public RefreshService(ApplicationEventPublisher publisher) {
         this.publisher = publisher;
     }
 

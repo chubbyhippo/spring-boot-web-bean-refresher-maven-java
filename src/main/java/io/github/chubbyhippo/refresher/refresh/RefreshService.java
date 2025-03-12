@@ -1,4 +1,4 @@
-package io.github.chubbyhippo.refresher;
+package io.github.chubbyhippo.refresher.refresh;
 
 
 import org.springframework.cloud.context.scope.refresh.RefreshScopeRefreshedEvent;

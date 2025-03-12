@@ -1,4 +1,4 @@
-package io.github.chubbyhippo.refresher;
+package io.github.chubbyhippo.refresher.refresh;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -73,5 +74,25 @@ class RefresherApplicationTests {
         });
         assertThat(beans).isNotEmpty();
         beans.forEach(System.out::println);
+    }
+
+    @Test
+    @DisplayName("should trigger refresh scope")
+    void shouldTriggerRefreshScope() {
+
+        mockMvcTester.post()
+                .uri("/message")
+                .content("Changed message")
+                .assertThat()
+                .hasStatusOk();
+
+        mockMvcTester.post()
+                .uri("/refresh")
+                .exchange();
+
+        mockMvcTester.get()
+                .uri("/message")
+                .assertThat()
+                .hasBodyTextEqualTo("Default message");
     }
 }

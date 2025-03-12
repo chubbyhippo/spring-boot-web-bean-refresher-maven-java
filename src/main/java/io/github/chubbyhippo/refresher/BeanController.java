@@ -7,8 +7,14 @@ import java.util.List;
 
 @RestController
 public class BeanController {
+    private final BeanService beanService;
+
+    public BeanController(BeanService beanService) {
+        this.beanService = beanService;
+    }
+
     @GetMapping("/beans")
     List<String> getBeans() {
-        return List.of("messageService", "messageController");
+        return beanService.getBeans();
     }
 }

@@ -24,8 +24,4 @@ public class MessageController {
         messageService.setMessage(message);
     }
 
-    @PostMapping("/refresh")
-    String refreshMessageService() {
-       return "refresh";
-    }
 }

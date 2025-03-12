@@ -2,6 +2,6 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: "refresh"
 springdoc:
   show-actuator: true

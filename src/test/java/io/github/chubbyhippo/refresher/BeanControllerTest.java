@@ -1,6 +1,5 @@
 package io.github.chubbyhippo.refresher;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ class BeanControllerTest {
 
     @Test
     @DisplayName("should return bean name list")
-    void shouldReturnBeanNameList() throws JsonProcessingException {
+    void shouldReturnBeanNameList() {
         mockMvcTester.get()
                 .uri("/beans")
                 .assertThat()

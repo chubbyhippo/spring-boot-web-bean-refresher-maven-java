@@ -17,7 +17,9 @@ public class ClassControllerTest {
        mockMvcTester.get()
                .uri("/classes")
                .assertThat()
-               .hasStatusOk();
+               .hasStatusOk()
+               .bodyText()
+               .contains("ClassController");
 
     }
 }

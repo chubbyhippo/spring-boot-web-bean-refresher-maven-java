@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -93,5 +94,28 @@ class RefresherApplicationTests {
                 .uri("/message")
                 .assertThat()
                 .hasBodyTextEqualTo("Default message");
+    }
+
+    @Test
+    @DisplayName("should restart bean")
+    void shouldRestartBean() {
+
+        mockMvcTester.post()
+                .uri("/message")
+                .content("Changed message")
+                .assertThat()
+                .hasStatusOk();
+
+        mockMvcTester.post()
+                .uri("/beanRestart")
+                .param("beanName", "messageService")
+                .assertThat()
+                .hasStatusOk();
+
+        mockMvcTester.get()
+                .uri("/message")
+                .assertThat()
+                .hasBodyTextEqualTo("Default message");
+
     }
 }

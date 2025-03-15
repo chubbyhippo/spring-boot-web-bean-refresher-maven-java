@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class BeanTest {
 
     @Autowired
@@ -43,7 +43,6 @@ class BeanTest {
 
     @Test
     @DisplayName("should restart bean")
-    @DirtiesContext
     void shouldRestartBean() {
 
         mockMvcTester.post()

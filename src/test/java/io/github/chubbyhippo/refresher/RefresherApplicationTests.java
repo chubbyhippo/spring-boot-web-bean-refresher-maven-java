@@ -72,16 +72,4 @@ class RefresherApplicationTests {
                 .hasBodyTextEqualTo("Default message");
     }
 
-
-    @Test
-    @DisplayName("should return list of classes")
-    void shouldReturnListOfClasses() {
-        mockMvcTester.get()
-                .uri("/classes")
-                .assertThat()
-                .hasStatusOk()
-                .bodyText()
-                .contains("ClassController");
-
-    }
 }

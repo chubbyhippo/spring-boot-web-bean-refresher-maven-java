@@ -12,7 +12,7 @@
 	<artifactId>refresher</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>refresher</name>
-	<description>Demo bean refressher project for Spring Boot</description>
+	<description>Demo bean refresher project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>

@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 @Service
 public class ClassService {
     private static final Logger log = LoggerFactory.getLogger(ClassService.class);
+
     public List<String> getClasses() {
         Path rootPath = Path.of("src/main/java");
         try (Stream<Path> stream = Files.walk(rootPath)) {
@@ -31,5 +32,12 @@ public class ClassService {
                 .replace("/", ".")
                 .replace("\\", ".");
         return className.substring(0, className.length() - 5);
+    }
+
+    public String getFullyQualifiedNameBy(String input) {
+        return getClasses().stream()
+                .filter(className -> className.toLowerCase().contains(input.toLowerCase()))
+                .findFirst()
+                .orElse("No class found for: " + input);
     }
 }

@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 @ExtendWith(MockitoExtension.class)
 class ClassServiceTest {
@@ -21,6 +22,24 @@ class ClassServiceTest {
     void shouldReturnFullyQualifyNameForClassesInTheProject() {
         List<String> classes = classService.getClasses();
         assertThat(classes).isNotEmpty();
+    }
+
+    @Test
+    @DisplayName("should get fully qualify name by search word")
+    void shouldGetFullyQualifyNameBySearchWord() {
+        String fullyQualifiedName = classService.getFullyQualifiedNameBy("messageservice");
+        assertThat(fullyQualifiedName)
+                .isEqualTo("io.github.chubbyhippo.refresher.message.MessageService");
+
+    }
+
+    @Test
+    @DisplayName("should get empty string if not found")
+    void shouldGetEmptyStringIfNotFound() {
+        String input = "notfound";
+        String fullyQualifiedName = classService.getFullyQualifiedNameBy(input);
+        assertThat(fullyQualifiedName)
+                .isEqualTo("No class found for: " + input);
     }
 
 }

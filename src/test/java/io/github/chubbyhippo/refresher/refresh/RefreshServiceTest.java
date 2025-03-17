@@ -11,9 +11,10 @@ import org.springframework.cloud.endpoint.RefreshEndpoint;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class RefreshServiceTest {
+class RefreshServiceTest {
     @InjectMocks
     private RefreshService refreshService;
+
 
     @Mock
     private RefreshEndpoint refreshEndpoint;
